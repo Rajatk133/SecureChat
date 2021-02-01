@@ -1,27 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#B3D5F1"
-    tools:context=".ChatActivity">
+    tools:context="com.google.firebase.securechat.Groupchat2Activity"
+    android:background="#9ACAEF">
 
     <ListView
-        android:id="@+id/messagelist"
+        android:id="@+id/messageListView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@+id/linearLayout"
-        android:layout_marginStart="5dp"
-        android:layout_marginLeft="5dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginEnd="5dp"
-        android:layout_marginRight="5dp"
-        android:layout_marginBottom="5dp"
+        android:layout_marginBottom="0dp"
         android:divider="@android:color/transparent"
-        android:transcriptMode="alwaysScroll"
-        tools:listitem="@layout/message_layout" />
-
+        android:stackFromBottom="true"
+        android:transcriptMode="alwaysScroll" />
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
@@ -36,39 +31,26 @@
             android:layout_margin="10dp"
             android:background="@android:drawable/ic_menu_gallery"
             android:backgroundTint="#2196F3" />
-
         <EditText
-            android:id="@+id/editmessage"
+            android:id="@+id/messageEditText"
             android:layout_width="0dp"
             android:layout_height="44dp"
             android:layout_gravity="center_vertical"
             android:layout_weight="1"
-            android:autofillHints="Message"
             android:background="@drawable/messagetaker"
-            android:hint="Type To Compose"
-            android:padding="10dp" />
+            android:padding="10dp"
+            android:autofillHints="Message"
+            android:hint="Type To Compose"/>
 
         <ImageView
-            android:id="@+id/send"
+            android:id="@+id/sendButton"
             android:layout_width="47dp"
             android:layout_height="44dp"
             android:layout_margin="10dp"
             android:background="@drawable/messagetaker"
             android:backgroundTint="#82EA0A"
             android:padding="10dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:srcCompat="@drawable/iconfinder_enter_2199089" />
+            app:srcCompat="@android:drawable/ic_menu_send" />
     </LinearLayout>
-
-    <ProgressBar
-        android:id="@+id/progressBar"
-        style="?android:attr/progressBarStyleLarge"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true" />
 
 </RelativeLayout>

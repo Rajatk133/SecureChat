@@ -23,7 +23,6 @@ public class NewUserActivity extends AppCompatActivity {
         setContentView(R.layout.activity_new_user);
 
         FirebaseAuth mAuth = FirebaseAuth.getInstance();
-
         Button Signup = findViewById(R.id.signup);
 
 

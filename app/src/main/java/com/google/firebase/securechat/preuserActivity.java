@@ -7,7 +7,9 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Base64;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -25,6 +27,11 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
+import java.security.KeyPair;
+import java.security.KeyPairGenerator;
+import java.security.PrivateKey;
+import java.security.PublicKey;
+
 public class preuserActivity extends AppCompatActivity {
     String username=null;
     @Override
@@ -39,7 +46,21 @@ public class preuserActivity extends AppCompatActivity {
         Intent intent = getIntent();
         username = intent.getStringExtra("receivername");
         username = intent.getStringExtra("receivername2");
-        Toast.makeText(getApplicationContext(),username,Toast.LENGTH_LONG).show();
+
+        getSupportActionBar().setTitle(username);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+      //  Toast.makeText(getApplicationContext(),username,Toast.LENGTH_LONG).show();
+
+        SharedPreferences sharedPreferences = getSharedPreferences("keysvalue", MODE_PRIVATE);
+
+      //  Toast.makeText(getApplicationContext(),sharedPreferences.getString("publickey",""),Toast.LENGTH_LONG).show();
+       // Toast.makeText(getApplicationContext(),sharedPreferences.getString("privatekey",""),Toast.LENGTH_LONG).show();
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        Toast.makeText(getApplicationContext(),sharedPreferences.getString("demo",""),Toast.LENGTH_LONG).show();
+        editor.putString("demo","loser");
+        editor.commit();
+        Toast.makeText(getApplicationContext(),sharedPreferences.getString("demo",""),Toast.LENGTH_LONG).show();
         sc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -77,5 +98,17 @@ public class preuserActivity extends AppCompatActivity {
             }
         }
         return true;
+    }
+    public static KeyPair getKeyPair() {
+        KeyPair kp = null;
+        try {
+            KeyPairGenerator kpg = KeyPairGenerator.getInstance("RSA");
+            kpg.initialize(2048);
+            kp = kpg.generateKeyPair();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return kp;
     }
 }

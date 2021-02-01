@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:layout_margin="20dp"
+    android:background="@drawable/userbackground"
+    android:elevation="10dp"
+    android:layout_marginTop="5dp">
+
+    <ImageView
+        android:layout_width="63dp"
+        android:layout_height="45dp"
+        android:layout_margin="10dp"
+        android:src="@drawable/groupchat"
+        app:srcCompat="@drawable/groupchat"
+        android:layout_gravity="center"/>
+<LinearLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_gravity="center">
+    <TextView
+        android:id="@+id/gname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:text="Group Name"
+        android:textStyle="bold"
+        android:textColor="#FFFFFF"
+        android:textSize="15dp" />
+<LinearLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:textColor="#FFFFFF"
+        android:text="Users: "
+        android:textSize="10sp" />
+
+    <TextView
+        android:id="@+id/userno"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:textColor="#FFFFFF"
+        android:text="10"
+        android:textSize="10sp" /></LinearLayout></LinearLayout>
+</LinearLayout>

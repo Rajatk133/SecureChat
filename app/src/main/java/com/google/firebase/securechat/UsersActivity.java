@@ -41,9 +41,6 @@ public class UsersActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_users);
 
-        //Toolbar toolbar = findViewById(R.id.usertoolbar);
-       // setSupportActionBar(toolbar);
-
 
         Intent intent = getIntent();
         username = intent.getStringExtra("receivername");

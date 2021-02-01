@@ -5,7 +5,11 @@
     android:id="@+id/userinfo"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="10dp">
+    android:padding="10dp"
+    android:background="@drawable/userbackground"
+    android:layout_margin="20dp"
+    android:elevation="10dp"
+    android:layout_marginTop="5dp">
 
     <ImageView
         android:id="@+id/userimage"
@@ -19,6 +23,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="15sp"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold"
         android:text="TextView"
         android:textSize="15dp" />
 </LinearLayout>

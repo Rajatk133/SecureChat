@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -37,22 +38,20 @@ public class MessageAdapter extends ArrayAdapter<SecureMessage> {
         }
         TextView message = convertView.findViewById(R.id.message);
 
+        LinearLayout m1=convertView.findViewById(R.id.m1);
 
 
 
         SecureMessage message1 = getItem(position);
         if(message1.getOid()==1){
             message.setText(message1.getText());
-            RelativeLayout.LayoutParams lp= (RelativeLayout.LayoutParams) message.getLayoutParams();
-            lp.addRule(RelativeLayout.ALIGN_PARENT_RIGHT);
-            lp.removeRule(RelativeLayout.ALIGN_PARENT_LEFT);
+            m1.setScaleX(-1);
+            message.setScaleX(-1);
         }
         else{
             message.setText(message1.getText());
-            RelativeLayout.LayoutParams lp= (RelativeLayout.LayoutParams) message.getLayoutParams();
-            lp.addRule(RelativeLayout.ALIGN_PARENT_LEFT);
-            lp.removeRule(RelativeLayout.ALIGN_PARENT_RIGHT);
-
+            message.setScaleX(1);
+            m1.setScaleX(1);
         }
         return convertView;
     }

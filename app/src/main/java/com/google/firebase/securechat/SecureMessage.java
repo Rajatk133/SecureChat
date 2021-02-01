@@ -1,9 +1,11 @@
 package com.google.firebase.securechat;
 
+import java.security.PublicKey;
+
 public class SecureMessage {
 
     private String text;
-   private int oid;
+    private int oid;
     private String sender;
     private  String receiver;
     public SecureMessage() {
@@ -13,10 +15,9 @@ public class SecureMessage {
         this.text = text;
         this.sender = a;
         this.receiver=b;
-     //  this.user=c;
+
         this.oid=c;
     }
-
     public String getText() {
         return text;
     }
