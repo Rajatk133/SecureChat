@@ -12,7 +12,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import java.util.List;
-
 public class gchatmessageadaptor extends ArrayAdapter<groupmessage> {
     String Username="";
     public gchatmessageadaptor(@NonNull Context context, int resource, @NonNull List<groupmessage> objects,String a) {
@@ -29,14 +28,16 @@ public class gchatmessageadaptor extends ArrayAdapter<groupmessage> {
         TextView message = convertView.findViewById(R.id.messageTextView);
         TextView username = convertView.findViewById(R.id.nameTextView);
         LinearLayout mainlayout=(LinearLayout) convertView.findViewById(R.id.mainlayout);
-
+        LinearLayout inner=(LinearLayout) convertView.findViewById(R.id.inner);
         groupmessage details = getItem(position);
         username.setText(details.getUsername());
         message.setText(details.getMessage());
         if(details.getUsername().compareTo(Username)==0){
             mainlayout.setScaleX(-1);
-            username.setScaleX(-1);
-            message.setScaleX(-1);
+            inner.setScaleX(-1);
+        }else{
+            mainlayout.setScaleX(1);
+            inner.setScaleX(1);
         }
         return convertView;
     }

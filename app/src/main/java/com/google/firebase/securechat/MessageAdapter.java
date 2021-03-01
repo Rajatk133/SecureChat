@@ -40,8 +40,6 @@ public class MessageAdapter extends ArrayAdapter<SecureMessage> {
 
         LinearLayout m1=convertView.findViewById(R.id.m1);
 
-
-
         SecureMessage message1 = getItem(position);
         if(message1.getOid()==1){
             message.setText(message1.getText());

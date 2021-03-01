@@ -10,12 +10,14 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Base64;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -33,7 +35,7 @@ import java.security.PrivateKey;
 import java.security.PublicKey;
 
 public class preuserActivity extends AppCompatActivity {
-    String username=null;
+    String username="Rajat Kumar";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,17 +52,8 @@ public class preuserActivity extends AppCompatActivity {
         getSupportActionBar().setTitle(username);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-      //  Toast.makeText(getApplicationContext(),username,Toast.LENGTH_LONG).show();
 
-        SharedPreferences sharedPreferences = getSharedPreferences("keysvalue", MODE_PRIVATE);
-
-      //  Toast.makeText(getApplicationContext(),sharedPreferences.getString("publickey",""),Toast.LENGTH_LONG).show();
-       // Toast.makeText(getApplicationContext(),sharedPreferences.getString("privatekey",""),Toast.LENGTH_LONG).show();
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        Toast.makeText(getApplicationContext(),sharedPreferences.getString("demo",""),Toast.LENGTH_LONG).show();
-        editor.putString("demo","loser");
-        editor.commit();
-        Toast.makeText(getApplicationContext(),sharedPreferences.getString("demo",""),Toast.LENGTH_LONG).show();
+       Log.d("hello", (String) getSupportActionBar().getTitle());
         sc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -97,6 +90,12 @@ public class preuserActivity extends AppCompatActivity {
                 finish();
             }
         }
+        if(selected==R.id.action_update){
+            Intent intent=new Intent(getApplicationContext(),UpdateProfile.class);
+            Log.d("hello", (String) getSupportActionBar().getTitle());
+            intent.putExtra("user",(String) getSupportActionBar().getTitle());
+            startActivity(intent);
+        }
         return true;
     }
     public static KeyPair getKeyPair() {
@@ -108,7 +107,6 @@ public class preuserActivity extends AppCompatActivity {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
         return kp;
     }
 }

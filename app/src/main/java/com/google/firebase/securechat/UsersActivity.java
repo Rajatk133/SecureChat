@@ -4,7 +4,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -14,6 +13,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -34,7 +34,7 @@ import java.util.HashSet;
 
 public class UsersActivity extends AppCompatActivity {
     ArrayList<userInfo> users=new ArrayList<>();
-   String username=null;
+   String username="";
    HashSet<String> map=new HashSet<String>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,15 +45,19 @@ public class UsersActivity extends AppCompatActivity {
         Intent intent = getIntent();
         username = intent.getStringExtra("receivername");
         username = intent.getStringExtra("receivername2");
+
+       getSupportActionBar().setDisplayShowHomeEnabled(true);
+       getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+       getSupportActionBar().setTitle("Chats");
         map.add(username);
-        Toast.makeText(getApplicationContext(), username, Toast.LENGTH_LONG).show();
+
 
 
         DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
         DatabaseReference ref = rootRef.child(username).child("Chat Users");
 
 
-        ListView userinfoListView = findViewById(R.id.list);
+        final ListView userinfoListView = findViewById(R.id.list);
         final userInfoAdapter adaptor = new userInfoAdapter(UsersActivity.this, R.layout.username, users);
         userinfoListView.setAdapter(adaptor);
 
@@ -77,19 +81,30 @@ public class UsersActivity extends AppCompatActivity {
         ref.addChildEventListener(mchildEventListener);
 
 
-        userinfoListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+
+
+       userinfoListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                TextView info = ((LinearLayout) view).findViewById(R.id.username);
+
+                final TextView info = ((LinearLayout) view).findViewById(R.id.username);
+                ImageView imageView=((LinearLayout) view).findViewById(R.id.userdetails);
+                imageView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent intent = new Intent(getApplicationContext(), ProfileActivity.class);
+                         intent.putExtra("receivername", info.getText());
+                         startActivity(intent);
+                    }
+                });
+
                 Intent intent = new Intent(getApplicationContext(), ChatActivity.class);
                 intent.putExtra("receivername", info.getText());
                 startActivity(intent);
             }
         });
     }
-
-
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -145,6 +160,8 @@ public class UsersActivity extends AppCompatActivity {
                                 }
                             });
             AlertDialog dialog = builder.create();dialog.show();
+        }else if(selected==android.R.id.home){
+            finish();
         }
         return true;
     }

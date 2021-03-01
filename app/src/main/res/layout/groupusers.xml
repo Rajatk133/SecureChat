@@ -18,11 +18,15 @@
         android:src="@drawable/groupchat"
         app:srcCompat="@drawable/groupchat"
         android:layout_gravity="center"/>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="center">
 <LinearLayout
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:layout_gravity="center">
+    android:orientation="vertical">
     <TextView
         android:id="@+id/gname"
         android:layout_width="wrap_content"
@@ -34,8 +38,9 @@
         android:textSize="15dp" />
 <LinearLayout
     android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
+    android:layout_height="20dp"
     android:orientation="horizontal">
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -51,5 +56,31 @@
         android:layout_gravity="bottom"
         android:textColor="#FFFFFF"
         android:text="10"
-        android:textSize="10sp" /></LinearLayout></LinearLayout>
+        android:textSize="10sp" />
+
+    <TextView
+
+        android:layout_width="10dp"
+        android:layout_height="10dp"
+        android:layout_gravity="bottom"
+        android:layout_marginLeft="100dp"
+        android:background="@drawable/greencircle" />
+
+</LinearLayout></LinearLayout>
+
+
+
+        <TextView
+            android:id="@+id/adminname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:text="q"
+            android:textColor="#FFFFFF"
+            android:textSize="12sp"
+            android:layout_marginBottom="2dp"
+            android:layout_marginLeft="1dp">
+        </TextView>
+
+</LinearLayout>
 </LinearLayout>

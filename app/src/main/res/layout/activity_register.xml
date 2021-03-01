@@ -8,7 +8,7 @@
 
     <View
         android:id="@+id/view_blank"
-        android:layout_width="384dp"
+        android:layout_width="match_parent"
         android:layout_height="373dp"
         android:background="@drawable/background"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -92,11 +92,12 @@
                         android:layout_marginLeft="20dp"
                         android:layout_marginRight="20dp"
                         android:hint="Phone Number"
-                        android:inputType="textPassword"
+                        android:inputType="text"
                         android:maxLines="1"
                         android:textSize="20sp" />
 
                 </com.google.android.material.textfield.TextInputLayout>
+
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/textInputPassword"
                     style="@style/parent"
@@ -108,7 +109,7 @@
                         android:layout_marginLeft="20dp"
                         android:layout_marginRight="20dp"
                         android:hint="E-mail"
-                        android:inputType="textPassword"
+                        android:inputType="text"
                         android:maxLines="1"
                         android:textSize="20sp" />
 
@@ -134,11 +135,13 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/credentials_card"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"/>
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
+        android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+
         android:gravity="center"
         android:text="INTRODUCE YOURSELF"
         android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
@@ -147,9 +150,9 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/credentials_card"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.492"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/view_blank"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.482" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

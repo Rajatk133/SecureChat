@@ -59,7 +59,7 @@ public class GroupChatActivity extends AppCompatActivity {
             public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
                 String name = dataSnapshot.child("groupname").getValue(String.class);
                 String Num=dataSnapshot.child("uesrsNo").getValue(String.class);
-                String amin=dataSnapshot.child("Admin").getValue(String.class);
+                String amin=dataSnapshot.child("admin").getValue(String.class);
                 groupNameInfo ob = new groupNameInfo(name,Num,amin);
                 adaptor.add(ob);
             }
@@ -174,8 +174,10 @@ public class GroupChatActivity extends AppCompatActivity {
                 }
             });
             AlertDialog dialog = builder.create();dialog.show();
-        }
-        return true;
+        }else if(selected==android.R.id.home){
+                    finish();
+                }
+                return true;
     }
 
 }

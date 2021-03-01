@@ -28,8 +28,6 @@ public class RegisterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
-
-
         Button Submit=findViewById(R.id.Submit);
         /******************************Key pair Generation**********************/
         KeyPair kp = getKeyPair();
@@ -42,7 +40,7 @@ public class RegisterActivity extends AppCompatActivity {
         final String privateKeyBytesBase64 = new String(Base64.encode(privateKeyBytes, Base64.DEFAULT));
 
 
-      //  Toast.makeText(getApplicationContext(),sharedPreferences.getString("privatekey",""),Toast.LENGTH_LONG).show();
+       //Toast.makeText(getApplicationContext(),sharedPreferences.getString("privatekey",""),Toast.LENGTH_LONG).show();
        // Toast.makeText(getApplicationContext(),sharedPreferences.getString("publickey",""),Toast.LENGTH_LONG).show();
 
         Submit.setOnClickListener(new View.OnClickListener() {
@@ -76,14 +74,11 @@ public class RegisterActivity extends AppCompatActivity {
                 myref.setValue(Fname.getText().toString()+" "+Lname.getText().toString());
 
 
-                Intent intent = new Intent(getApplicationContext(),preuserActivity.class);
-                intent.putExtra("receivername",username);
+              Intent intent = new Intent(RegisterActivity.this,preuserActivity.class);
+                intent.putExtra("receivername2",username);
                 startActivity(intent);
             }
         });
-
-
-
     }
     public static KeyPair getKeyPair() {
         KeyPair kp = null;
@@ -94,7 +89,6 @@ public class RegisterActivity extends AppCompatActivity {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
         return kp;
     }
 

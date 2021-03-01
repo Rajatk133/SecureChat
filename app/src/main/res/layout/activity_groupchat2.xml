@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.google.firebase.securechat.Groupchat2Activity"
-    android:background="#9ACAEF">
+    android:background="@drawable/chatbackground">
 
     <ListView
         android:id="@+id/messageListView"
@@ -24,13 +24,6 @@
         android:layout_alignParentBottom="true"
         android:orientation="horizontal">
 
-        <ImageButton
-            android:id="@+id/photoPickerButton"
-            android:layout_width="50dp"
-            android:layout_height="48dp"
-            android:layout_margin="10dp"
-            android:background="@android:drawable/ic_menu_gallery"
-            android:backgroundTint="#2196F3" />
         <EditText
             android:id="@+id/messageEditText"
             android:layout_width="0dp"
@@ -38,19 +31,17 @@
             android:layout_gravity="center_vertical"
             android:layout_weight="1"
             android:background="@drawable/messagetaker"
-            android:padding="10dp"
+            android:padding="5dp"
+            android:layout_margin="10dp"
             android:autofillHints="Message"
             android:hint="Type To Compose"/>
 
         <ImageView
             android:id="@+id/sendButton"
             android:layout_width="47dp"
-            android:layout_height="44dp"
-            android:layout_margin="10dp"
-            android:background="@drawable/messagetaker"
+            android:layout_height="79dp"
             android:backgroundTint="#82EA0A"
-            android:padding="10dp"
-            app:srcCompat="@android:drawable/ic_menu_send" />
+            app:srcCompat="@drawable/emailsend"/>
     </LinearLayout>
 
 </RelativeLayout>

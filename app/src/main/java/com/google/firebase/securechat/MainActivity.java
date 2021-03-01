@@ -25,16 +25,16 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 public class MainActivity extends AppCompatActivity {
-  String name=null;
+    String name=null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_beta);
 
-      // getSupportActionBar().hide();
-       // androidx.appcompat.widget.Toolbar temp=findViewById(R.id.maintoolbar);
-    //  setSupportActionBar(temp);
+        // getSupportActionBar().hide();
+        // androidx.appcompat.widget.Toolbar temp=findViewById(R.id.maintoolbar);
+        //  setSupportActionBar(temp);
 
         final FirebaseAuth mauth;
         mauth=FirebaseAuth.getInstance();
@@ -115,7 +115,6 @@ public class MainActivity extends AppCompatActivity {
         newuser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 startActivity(new Intent(MainActivity.this,NewUserActivity.class));
             }
         });

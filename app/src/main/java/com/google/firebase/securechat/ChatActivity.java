@@ -9,6 +9,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import android.util.Base64;
+import android.view.MenuItem;
 import android.view.View;
 
 import android.widget.EditText;
@@ -64,6 +65,7 @@ public class ChatActivity extends AppCompatActivity {
        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
        getSupportActionBar().setDisplayShowHomeEnabled(true);
 
+
         final DatabaseReference database = FirebaseDatabase.getInstance().getReference(mAuth.getUid());
         final ProgressBar mProgressBar = (ProgressBar) findViewById(R.id.progressBar);
 
@@ -99,6 +101,7 @@ public class ChatActivity extends AppCompatActivity {
                             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                                 rec_publickey=dataSnapshot.getValue(String.class);
                                 final String Receiver = str;
+
                                 DatabaseReference my_reference=FirebaseDatabase.getInstance().getReference(UserName).child("Public Key");
 
                                 my_reference.addValueEventListener(new ValueEventListener() {
@@ -107,14 +110,21 @@ public class ChatActivity extends AppCompatActivity {
                                        my_publickey=dataSnapshot.getValue(String.class);
                                         if (mess.length() != 0) {
 
+
                                             String encrypted=encryptRSAToString(mess,my_publickey);
                                             DatabaseReference myref1 = FirebaseDatabase.getInstance().getReference(UserName);
+
                                             SecureMessage Message1 = new SecureMessage(encrypted, UserName, Receiver, 1);
                                             myref1.child("Message").child(str).push().setValue(Message1);
+
+
                                             DatabaseReference myref2 = FirebaseDatabase.getInstance().getReference(Receiver);
                                             encrypted=encryptRSAToString(mess,rec_publickey);
                                             SecureMessage Message2 = new SecureMessage(encrypted, UserName, Receiver, 0);
                                             myref2.child("Message").child(UserName).push().setValue(Message2);
+
+
+                                            
                                             mainmessage.setText("");
                                             Toast.makeText(getApplicationContext(), "Sent......", Toast.LENGTH_SHORT).show();
 
@@ -129,9 +139,6 @@ public class ChatActivity extends AppCompatActivity {
 
                                     }
                                 });
-
-
-
                             }
 
                             @Override
@@ -153,7 +160,6 @@ public class ChatActivity extends AppCompatActivity {
                             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                                 my_privatekey=dataSnapshot.getValue(String.class);
                                 String decrypted = decryptRSAToString(ob.getText(), my_privatekey);
-                                Toast.makeText(getApplicationContext(),my_privatekey,Toast.LENGTH_LONG).show();
                                 ob.setText(decrypted);
                                 mMessageAdapter.add(ob);
                             }
@@ -165,8 +171,6 @@ public class ChatActivity extends AppCompatActivity {
                         });
 
                     }
-
-
                     @Override
                     public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) { }
                     @Override
@@ -230,5 +234,12 @@ public class ChatActivity extends AppCompatActivity {
 
         return decryptedString;
     }
-
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        int id=item.getItemId();
+        if(id==android.R.id.home){
+            finish();
+        }
+        return true;
+    }
 }

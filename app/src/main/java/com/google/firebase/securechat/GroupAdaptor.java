@@ -25,10 +25,13 @@ public class GroupAdaptor extends ArrayAdapter<groupNameInfo> {
         TextView Groupname = (TextView) convertView.findViewById(R.id.gname);
         TextView userno = (TextView) convertView.findViewById(R.id.userno);
 
+         TextView admin=convertView.findViewById(R.id.adminname);
 
          groupNameInfo  info = getItem(position);
          Groupname.setText(info.getGroupname());
          userno.setText(info.UesrsNo);
+         admin.setText(info.getAdmin());
+
 
         return convertView;
     }

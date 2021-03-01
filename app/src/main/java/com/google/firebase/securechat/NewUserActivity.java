@@ -61,8 +61,6 @@ public class NewUserActivity extends AppCompatActivity {
                     } else {
                         Toast.makeText(NewUserActivity.this, "Password Doesn't Match", Toast.LENGTH_LONG).show();
                     }
-
-
                 } else {
                     Toast.makeText(NewUserActivity.this, "Please Enter Details Correctly", Toast.LENGTH_LONG).show();
                 }
