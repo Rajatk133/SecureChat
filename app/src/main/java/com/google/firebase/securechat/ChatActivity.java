@@ -109,8 +109,6 @@ public class ChatActivity extends AppCompatActivity {
                                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                                        my_publickey=dataSnapshot.getValue(String.class);
                                         if (mess.length() != 0) {
-
-
                                             String encrypted=encryptRSAToString(mess,my_publickey);
                                             DatabaseReference myref1 = FirebaseDatabase.getInstance().getReference(UserName);
 
